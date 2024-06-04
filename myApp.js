@@ -48,8 +48,13 @@ const findPeopleByName = (personName, done) => {
   });
 };
 
+var food = 'Orange';
+
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({favoriteFoods:food}, (err,foodFound) => {
+    if(err) return done(err);
+    done(null,foodFound);
+  });
 };
 
 const findPersonById = (personId, done) => {
@@ -83,7 +88,6 @@ const queryChain = (done) => {
 
   done(null /*, data*/);
 };
-
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
