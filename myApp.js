@@ -33,14 +33,19 @@ const createAndSavePerson = (done) => {
 var arrayOfPeople = [{name:'Mip enis', age: 62, favoriteFoods: ['Bread','Water']}, {name:'Ben Dover', age: 21, favoriteFoods: ['Nut','Orange']}]
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create(arrayOfPeople, (err,data) => {
+  Person.create(arrayOfPeople, (err,people) => {
     if (err) return done(err);    
-    done(null, data);
+    done(null, people);
   })
 };
 
+var personName = 'Mip enis';
+
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find({name : personName}, (err,person) => {
+    if (err) return done(err);
+    done(null, person);
+  });
 };
 
 const findOneByFood = (food, done) => {
@@ -78,6 +83,7 @@ const queryChain = (done) => {
 
   done(null /*, data*/);
 };
+
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
